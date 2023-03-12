@@ -58,6 +58,6 @@ def get_coords_map(x, y):
     assert isinstance(x, SparseTensor)
     assert isinstance(y, SparseTensor)
     assert (
-        x.coords_man == y.coords_man
+        x.coordinate_manager == y.coordinate_manager
     ), "X and Y are using different CoordinateManagers. Y must be derived from X through strided conv/pool/etc."
-    return x.coords_man.get_coords_map(x.coords_key, y.coords_key)
+    return x.coordinate_manager.stride_map(x.coordinate_map_key, y.coordinate_map_key)
